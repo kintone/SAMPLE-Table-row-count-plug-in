@@ -8,15 +8,15 @@
 (function(PLUGIN_ID) {
     'use strict';
 
-    // Get plugin configuration settings
+    // Get plug-in configuration settings
     var CONFIG = kintone.plugin.app.getConfig(PLUGIN_ID);
-    // Get each settings
+    // Get each setting
     if (!CONFIG) {
         return false;
     }
 
-    var TABLEROWS = CONFIG.table_row; //field code of the table
-    var ROWCOUNT = CONFIG.row_count; //field code of the number field
+    var TABLEROWS = CONFIG.table_row; // Field code of the table
+    var ROWCOUNT = CONFIG.row_count; // Field code of the number field
 
     //The event triggers when the save button is clicked on the record create or edit page
     kintone.events.on(["app.record.create.submit", "app.record.edit.submit"], function(eventobj) {
@@ -26,7 +26,7 @@
         //Set a new value in a field, listed in the event object
         eventobj.record[ROWCOUNT].value = num_of_rows;
 
-        //Return the event object, so that kintone will use this new data
+        //Return the event object, so that Kintone will use this new data
         return eventobj;
     });
 })(kintone.$PLUGIN_ID);
