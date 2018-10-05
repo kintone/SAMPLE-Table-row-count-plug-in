@@ -7,7 +7,7 @@
       "js/desktop.js"
     ]
   },
-  "icon": "image/tablerow.png",
+  "icon": "image/tower.png",
   "config": {
     "html": "html/config.html",
     "js": [
