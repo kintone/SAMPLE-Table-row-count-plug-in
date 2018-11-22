@@ -30,6 +30,6 @@
     "en": "This sample plug-in counts the number of rows you have in your table, and places that number in the specified field when you save your record."
   },
   "homepage_url": {
-    "en": "https://developer.kintone.io/hc/en-us/articles/115003487808"
+    "en": "https://developer.kintone.io/hc/en-us/articles/360010196073"
   }
 }
