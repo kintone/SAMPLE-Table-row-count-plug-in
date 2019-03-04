@@ -8,13 +8,11 @@ jQuery.noConflict();
 (function($, PLUGIN_ID) {
     'use strict';
     // Get configuration settings
-
     var CONF = kintone.plugin.app.getConfig(PLUGIN_ID);
 
     function setDropDown() {
         // Retrieve field information, then set dropdown
-        // eslint-disable-next-line no-undef
-        return KintoneConfigHelper.getFields().then(function(resp) {
+        return KintoneConfigHelper.getFields(["SUBTABLE", "NUMBER"]).then(function(resp) {
             var $tableDropDown = $('#select_table_field');
             var $numberDropDown = $('#select_number_field');
             for (var i = 0; i < resp.length; i++) {
