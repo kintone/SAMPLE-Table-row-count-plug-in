@@ -12,18 +12,18 @@ jQuery.noConflict();
 
     function setDropDown() {
         // Retrieve field information, then set dropdown
-        return KintoneConfigHelper.getFields(["SUBTABLE", "NUMBER"]).then(function(resp) {
+        return KintoneConfigHelper.getFields(['SUBTABLE', 'NUMBER']).then(function(resp) {
             var $tableDropDown = $('#select_table_field');
             var $numberDropDown = $('#select_number_field');
             for (var i = 0; i < resp.length; i++) {
                 var $option = $('<option></option>');
                 switch (resp[i].type) {
-                    case "SUBTABLE":
+                    case 'SUBTABLE':
                         $option.attr('value', resp[i].code);
                         $option.text(resp[i].code);
                         $tableDropDown.append($option.clone());
                         break;
-                    case "NUMBER":
+                    case 'NUMBER':
                         $option.attr('value', resp[i].code);
                         $option.text(resp[i].label);
                         $numberDropDown.append($option.clone());
