@@ -8,46 +8,39 @@ jQuery.noConflict();
 (function($, PLUGIN_ID) {
     'use strict';
     // Get configuration settings
-
     var CONF = kintone.plugin.app.getConfig(PLUGIN_ID);
-
-    function escapeHtml(htmlstr) {
-        return htmlstr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    }
 
     function setDropDown() {
         // Retrieve field information, then set dropdown
-        return kintone.api(kintone.api.url('/k/v1/preview/app/form/fields', true), 'GET',
-            {'app': kintone.app.getId()}).then(function(resp) {
-
-            for (var key in resp.properties) {
-                if (!resp.properties.hasOwnProperty(key)) {
-                    continue;
-                }
-                var prop = resp.properties[key];
-                var $option = $('<option>');
-
-                switch (prop.type) {
+        return KintoneConfigHelper.getFields(['SUBTABLE', 'NUMBER']).then(function(resp) {
+            var $tableDropDown = $('#select_table_field');
+            var $numberDropDown = $('#select_number_field');
+            for (var i = 0; i < resp.length; i++) {
+                var $option = $('<option></option>');
+                switch (resp[i].type) {
                     case 'SUBTABLE':
-                        $option.attr('value', prop.code);
-                        $option.text(prop.code);
-                        $('#select_table_field').append($option.clone());
+                        $option.attr('value', resp[i].code);
+                        $option.text(resp[i].code);
+                        $tableDropDown.append($option.clone());
                         break;
                     case 'NUMBER':
-                        $option.attr('value', prop.code);
-                        $option.text(escapeHtml(prop.label));
-                        $('#select_number_field').append($option.clone());
+                        $option.attr('value', resp[i].code);
+                        $option.text(resp[i].label);
+                        $numberDropDown.append($option.clone());
                         break;
                     default:
                         break;
                 }
             }
             // Set default values
-            $('#select_table_field').val(CONF.table_row);
-            $('#select_number_field').val(CONF.row_count);
+            if (CONF.table_row) {
+                $tableDropDown.val(CONF.table_row);
+            }
+            if (CONF.row_count) {
+                $numberDropDown.val(CONF.row_count);
+            }
         }, function(resp) {
-            return alert('Failed to retrieve field(s) information');
+            return alert('Failed to retrieve fields information');
         });
     }
     $(document).ready(function() {
