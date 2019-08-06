@@ -59,11 +59,6 @@ jQuery.noConflict();
       var row_count = $number.val();
       e.preventDefault();
 
-      // Check required fields
-      if (table_row === '' || row_count === '') {
-        alert('Please set required field(s)');
-        return;
-      }
       config.table_row = table_row;
       config.row_count = row_count;
       kintone.plugin.app.setConfig(config, function() {
