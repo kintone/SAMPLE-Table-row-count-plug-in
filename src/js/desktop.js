@@ -8,12 +8,14 @@
 (function(PLUGIN_ID) {
   'use strict';
   var CONFIG = kintone.plugin.app.getConfig(PLUGIN_ID); // Get plug-in configuration settings
-  var TABLEROWS = CONFIG.table_row; // Field code of the table
-  var ROWCOUNT = CONFIG.row_count; // Field code of the number field
+  var TABLEROWS;
+  var ROWCOUNT;
   // Get each setting
   if (!CONFIG) {
     return false;
   }
+  TABLEROWS = CONFIG.table_row; // Field code of the table
+  ROWCOUNT = CONFIG.row_count; // Field code of the number field
 
   // The event triggers when the save button is clicked on the record create or edit page
   kintone.events.on(['app.record.create.submit', 'app.record.edit.submit'], function(eventobj) {
