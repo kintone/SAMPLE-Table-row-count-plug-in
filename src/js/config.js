@@ -45,7 +45,7 @@ jQuery.noConflict();
       if (CONF.row_count) {
         $numberDropDown.val(CONF.row_count);
       }
-    }, function(resp) {
+    }, function() {
       return alert('Failed to retrieve fields information');
     });
   }
