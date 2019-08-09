@@ -8,8 +8,7 @@
 (function(PLUGIN_ID) {
   'use strict';
   var CONFIG = kintone.plugin.app.getConfig(PLUGIN_ID); // Get plug-in configuration settings
-  var TABLEROWS;
-  var ROWCOUNT;
+  var TABLEROWS, ROWCOUNT;
   // Get each setting
   if (!CONFIG) {
     return false;
