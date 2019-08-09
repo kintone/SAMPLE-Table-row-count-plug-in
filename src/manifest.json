@@ -16,7 +16,8 @@
       "js/kintone-config-helper.js"
     ],
     "css": [
-      "css/51-modern-default.css"
+      "css/51-modern-default.css",
+      "css/config.css"
     ],
     "required_params": [
       "table_row",
