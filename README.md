@@ -20,12 +20,10 @@ src/
 │        └──── config.css  
 ├── js/  
 │        ├──── config.js  
-│        ├──── desktop.js 
-
-│        └──── kintone-config-helper.js 
-
+│        ├──── desktop.js  
+│        └──── kintone-config-helper.js  
 ├── image/  
-│        └──── tower.png  
+│        └──── tower.png   
 └── manifest.json  
 
 ## How to use
